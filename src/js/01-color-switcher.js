@@ -1,13 +1,18 @@
-let btnRef = selector => document.querySelector(selector);
+// let btnRef = selector => document.querySelector(selector);
 
-btnRef(`[data-start]`).addEventListener("click", onStartChange);
-btnRef(`[data-stop]`).addEventListener("click", onStopChange);
+// btnRef(`[data-start]`).addEventListener("click", onStartChange);
+// btnRef(`[data-stop]`).addEventListener("click", onStopChange);
+const startBtnRef = document.querySelector(`[data-start]`);
+const stopBtnRef = document.querySelector(`[data-stop]`);
+
+startBtnRef.addEventListener("click", onStartChange);
+stopBtnRef.addEventListener("click", onStopChange);
 
 let interval; // = null;
 
 function onStartChange() {
-btnRef(`[data-start]`).disabled = true; 
-btnRef(`[data-stop]`).disabled = false;
+startBtnRef.disabled = true; 
+stopBtnRef.disabled = false;
 interval = setInterval(() => {
 document.body.style.backgroundColor = getRandomHexColor();
 }, 1000);
@@ -16,8 +21,8 @@ document.body.style.backgroundColor = getRandomHexColor();
 
 function onStopChange() {
     clearInterval(interval);
-    btnRef(`[data-start]`).disabled = false;
-    btnRef(`[data-stop]`).disabled = true;
+    startBtnRef.disabled = false;
+    stopBtnRef.disabled = true;
 };
 
 
